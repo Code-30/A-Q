@@ -38,5 +38,6 @@ A2：
 A1：原因可能是芯片为翻新货，内部数据被修改，无法被正常驱动。解决方法为安装原厂驱动程序，具体操作如下图。
 ![1](https://raw.githubusercontent.com/MeowStatus/IMG/main/Images/202303181322217.jpg)
 ![2](https://raw.githubusercontent.com/MeowStatus/IMG/main/Images/202303181323892.png)
+
 修复完成结果如图。
 ![3](https://raw.githubusercontent.com/MeowStatus/IMG/main/Images/202303181323350.jpg)
