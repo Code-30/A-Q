@@ -1,5 +1,10 @@
 # FAQ
+## Q4：程序下载失败的玄学因素
+
+A4：数据线必须伸展开，不能用轧带扎起来。
+
 ## Q3：隔离数字地和模拟地的方法
+
 A3:1、磁珠的等效电路相当于带阻滤波器，只对某频点的噪声有显著抑制作用，使用时需要预先估计噪点频率，以便选择适当型号。对于频率不确定或无法预知的情况，磁珠不适合使用。
 2、电容的“隔直通交”作用会造成浮地。
 3、电感体积大，杂散参数多，不稳定。
@@ -26,8 +31,8 @@ A2：
 |USB 3.1 Gen 1|5Gbps(500MB/s)|Super-Speed|5V/900mA|2013/12|
 | USB 3.1 Gen 2 |10Gbps(1280MB/s)|Super-speed+|20V/5A|2013/12|
 ## Q1：CP2102系列芯片插入电脑遇到 “Verifone USB to Modem” 问题。
-A1：原因可能是芯片为翻新货，内部数据被修改，无法被正常驱动。解决方法为安装原厂驱动程序，具体操作如下图。\
-![image](https://github.com/Code-30/QandA/blob/main/Images/1.jpg)\
-![image](https://github.com/Code-30/QandA/blob/main/Images/2.png)\
+A1：原因可能是芯片为翻新货，内部数据被修改，无法被正常驱动。解决方法为安装原厂驱动程序，具体操作如下图。
+![1](https://raw.githubusercontent.com/MeowStatus/IMG/main/Images/202303181322217.jpg)
+![2](https://raw.githubusercontent.com/MeowStatus/IMG/main/Images/202303181323892.png)
 修复完成结果如图。
-![image](https://github.com/Code-30/QandA/blob/main/Images/3.jpg)
+![3](https://raw.githubusercontent.com/MeowStatus/IMG/main/Images/202303181323350.jpg)
