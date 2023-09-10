@@ -1,8 +1,39 @@
 # FAQ
 
+## Q11：阻值windows自动递增COM编号
+
+A11：《Windows系统USB转串口固定COM口编号》中提到了如何固定COM口序号并且实现多个USB串口设备的区分。内置USB Serial Number的USB芯片在终端客户使用时十分便利，在生产环节批量测试时会遇到以下问题。
+
+1、USB设备首次插入Windows系统主机时，系统会根据芯片的USB Serial Number为其分配串口号，这个过程会持续几秒钟甚至数十秒，然后Windows会记录下设备的VID/PID/Serial Number，等设备再次接入后，Windows系统会先查找之前记录的设备列表，如果有匹配的设备，则不需要重新分配新的串口（安装驱动）。
+
+2、以CH342/CH343芯片为例，芯片出厂时均内置USB Serial Number，各芯片均是唯一的，导致每次接入新设备，都会重新安装驱动，分配新的COM号。
+
+3、COM口序号会随着设备的增加而不停增加，生产用的电脑到一定数量则无法生成新串口。
+
+4、COM口序号不停改变，需要通过串口测试产品功能时要不停更换串口。
+
+​    为避免上述问题，尤其是生产用机器，可以使用下述方法进行规避从而提高效率。方法为：强制忽略USB Serial Number。
+
+​    原理为，对HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags的注册表项IgnoreHWSerNum进行配置，组成形式IgnoreHWSerNumVVVVPPPP，其中VVVV为设备VID，PPPP为设备PID。
+​    将IgnoreHWSerNum与待设置USB设备VID、PID组合之后，配置值为01，则强制 USB 驱动程序堆栈忽略设备的序列号。配置值为00，则代表启用设备的序列号功能。
+
+示例：(产品VID为1A86，PID为55D4)
+1、创建txt文件，写入如下内容
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags]
+"IgnoreHWSerNum1A8655D4"=hex:01
+
+2、保存，并将txt文件后缀名修改为IgnoreHwSerNum_CH343.reg 
+
+3、双击运行该注册表文件将其导入至系统
+
+## Q10：魅族卸载不掉Google框架
+
+A10：在设置中找到指纹菜单的设备管理，然后关闭“查找设备”，即可成功卸载。
+
 ## Q9：关于路由器不选Bridge（AP）桥接模式就不能正常联网
 
-A9：存在一种可能，自用路由器并非直连光猫，而是通过一级路由器间接与光猫相连。自用路由器的局域网ip和一级路由器的局域网ip相同，导致了网络冲突。只需把自用路由器的局域网ip（华为路由器是192.168.3.1）更改网段即可。
+A9：存在一种可能，自用路由器并非直连光猫，而是通过一级路由器间接与光猫相连。自用路由器的局域网ip和一级路由器的局域网ip相同，导致了网络冲突。只需把自用路由器的局域网ip（华为路由器是192.168.3.1）更改网段即可。改完记得在主页重启路由器（主页重启完后会自动运行网络诊断）。
 
 ## Q8：TF卡类型
 
